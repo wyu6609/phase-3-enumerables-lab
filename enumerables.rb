@@ -37,13 +37,13 @@ end
 # given an array of spicy foods and a string representing a cuisine, **return a single hash**  
 # for the spicy food whose cuisine matches the cuisine being passed to the method
 def get_spicy_food_by_cuisine(spicy_foods, cuisine)
-  # your code here
+  spicy_foods.find{|food| food[:cuisine]==cuisine}
 end
 
 # Given an array of spicy foods, **return an array of hashes** 
 # sorted by heat level from lowest to highest
 def sort_by_heat(spicy_foods)
-  # your code here
+  spicy_foods.sort{|a,b| a[:heat_level]<=> b[:heat_level]}
 end
 
 # given an array of spicy foods, output to the terminal ONLY 
@@ -51,11 +51,14 @@ end
 # Buffalo Wings (American) | Heat Level: 🌶🌶🌶
 # HINT: Try to use methods you've already written to solve this!
 def print_spiciest_foods(spicy_foods)
-  # your code here
+  print_spicy_foods(spiciest_foods(spicy_foods))
 end
 
 # given an array of spicy foods, return an integer representing 
 # the average heat level of all the spicy foods in the array
 def average_heat_level(spicy_foods)
-  # your code here
+  #sum 
+  heat_sum = spicy_foods.reduce(0){|memo,food| memo + food[:heat_level]}
+  #average_heat_level
+  heat_sum / spicy_foods.length
 end
